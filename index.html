@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+    <head>
+        <title>App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body onload="javascript:getData('#dataTable')">
+        
+        <h1>Lista de comidas</h1>
+        <table id='dataTable'></table>
+        <div id="estadoTabla"></div>
+        <h1>Añadir un acomida nueva</h1>
+        <div id="nuevaComida">
+                <label>Hora y minutos de la comida:</label>
+                <input type="text" id="hora">
+                <input type="text"  id="minutos" ><br/>
+                <label>Peso:</label>
+                <input type="text" id="peso"><br/>
+                <label>Nombre de la comida:</label>
+                <input type="text" id="nombre"><br/>
+            <button onclick="javascript:sendForm()">Guardar</button>
+            <div id="output"></div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+
+</html>
