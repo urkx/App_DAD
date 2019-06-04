@@ -1,7 +1,7 @@
 function getData(selector){
     var estadoTabla = document.getElementById('estadoTabla');
     var request = new XMLHttpRequest;
-    request.open('GET', 'https://localhost:8090/comidas');
+    request.open('GET', 'https://my-json-server.typicode.com/typicode/demo/posts');
     request.onload = function () {
         var data = JSON.parse(this.response);
     
@@ -9,10 +9,10 @@ function getData(selector){
             
                 var columns = addAllColumnHeaders(data, selector);
               
-                for (var i = 0; i < myList.length; i++) {
+                for (var i = 0; i < data.length; i++) {
                   var row$ = $('<tr/>');
                   for (var colIndex = 0; colIndex < columns.length; colIndex++) {
-                    var cellValue = myList[i][columns[colIndex]];
+                    var cellValue = data[i][columns[colIndex]];
                     if (cellValue == null) cellValue = "";
                     row$.append($('<td/>').html(cellValue));
                   }
