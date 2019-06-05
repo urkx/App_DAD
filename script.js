@@ -50,18 +50,34 @@ function addAllColumnHeaders(myList, selector) {
 
 
 function sendForm(){
-    var output = document.getElementById("output");
+    /*var output = document.getElementById("output");
     var postRequest = new XMLHttpRequest();
-    var hora = document.getElementById('hora').value;
-    var nombre =document.getElementById('nombre').value;
-    var json = '{"horas": ' + hora + ',' +
-    '"nombreComida": ' + nombre + '}';
-    postRequest.open("POST", 'https://localhost:8090/anyadirComida');
+    var id = document.getElementById('id').value;
+    var titulo =document.getElementById('titulo').value;
+    var json = '{"id": ' + id + ',' +
+    '"title": ' + titulo + '}';
+    postRequest.open("PUT", 'https://my-json-server.typicode.com/typicode/demo/posts');
     postRequest.send(json);
     postRequest.onerror = function(){alert('fallo');}
-    if(postRequest == 200){
+    if(postRequest.status == 200){
         output.innerHTML += "Añadida";
     }else{
         output.innerHTML += "Error" + postRequest.status + json;
-    }
-}
+    }*/
+    var output = document.getElementById("output");
+    var id = document.getElementById('id').value;
+    var titulo =document.getElementById('titulo').value;
+    var json = '{"id": ' + id + ',' +
+    '"title": ' + titulo + '}';
+    $.ajax({
+      url: 'https://my-json-server.typicode.com/typicode/demo/posts',
+      type: 'POST',
+      success: function(json){
+        output.innerHTML += JSON.stringify(json);
+      },
+      data: json,
+      error: function(){
+        output.innerHTML += 'Fallo';
+      }
+    });
+  }
